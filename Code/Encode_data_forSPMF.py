@@ -31,7 +31,7 @@ features = ['REGION', 'AGER20', 'ANARR', 'ANEMR', 'ASCEN', 'BAIN', 'BATI', 'CATL
             'SEXE', 'SFM', 'STOCD', 'TACT', 'VOIT', 'WC']
 # convert all the values to obeject
 data = data[features].astype('str')
-# select smmal set from data
+# select small set from data
 data = data[features].iloc[:10]
 
 for i, row in enumerate(data.values):
@@ -43,13 +43,13 @@ for i, row in enumerate(data.values):
             invdico[indice] = key
             indice += 1
             
-print(dico)
+print("dictionary   :", dico)
+print("Inverse dictionary    :", invdico)
 
 
     
-with open('encoded_file.txt', 'w') as out: 
+with open('../Results/encoded_file.txt', 'w') as out: 
 
-    
     for row in data.values:
         rows = []
         for val in row:
@@ -62,7 +62,7 @@ with open('encoded_file.txt', 'w') as out:
     out.close()
 
 
-fichier=open('invdico.dbm', 'wb')
+fichier=open('../Results/invdico.dbm', 'wb')
 pickle.dump(invdico,fichier)
 
 

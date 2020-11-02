@@ -1,3 +1,9 @@
+import sys
+import pickle
+
+
+
+
 def decode(a):
 #    print invdico
     list=a.split(' ')
@@ -23,7 +29,7 @@ res=open(f_out,'w')
 
     
 # Construction du dictionnaire
-dic = open('invdico.dbm', 'rb')
+dic = open('../Results/invdico.dbm', 'rb')
 invdico = pickle.load(dic)
 #print invdico
 
