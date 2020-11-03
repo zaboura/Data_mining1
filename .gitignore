@@ -1,11 +1,12 @@
 # directories 
 
-Data/*
-Tools/* 
-Files_pdf/*
-Results/*
+
+#Tools/* 
+#Files_pdf/*
 .DS_Store
 
 
 #files
 
+Data/GrandEst
+Results/*.txt
