@@ -1,7 +1,7 @@
 # Data mining project 1:
 
 
-## Architucture of depository:
+## Architecture of depository:
 
 
 Data_minig1/
