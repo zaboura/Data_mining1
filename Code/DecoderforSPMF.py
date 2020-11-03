@@ -1,7 +1,8 @@
+# Usage
+# python DecodeAfterSPMF.py fich-a-decoder fich-resultat
+#
 import sys
 import pickle
-
-
 
 
 def decode(a):
@@ -24,12 +25,12 @@ p=len(sys.argv)
 if p==3:
     f_out=sys.argv[2]
 else:
-    f_out="res_decode.txt"
+    f_out="Results/res_decode.txt"
 res=open(f_out,'w')
 
     
 # Construction du dictionnaire
-dic = open('../Results/invdico.dbm', 'rb')
+dic = open('./Results/invdico.dbm', 'rb')
 invdico = pickle.load(dic)
 #print invdico
 
@@ -50,3 +51,5 @@ for l in f.readlines():
     else:
         print('!!!!! ligne non conforme')
 res.close()
+    
+    

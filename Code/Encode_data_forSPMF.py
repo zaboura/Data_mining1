@@ -33,6 +33,7 @@ features = ['REGION', 'AGER20', 'ANARR', 'ANEMR', 'ASCEN', 'BAIN', 'BATI', 'CATL
 data = data[features].astype('str')
 # select small set from data
 data = data[features].iloc[:10]
+print('\n Data :\n', data)
 
 for i, row in enumerate(data.values):
     for col, val in zip(features,row):
@@ -53,7 +54,6 @@ with open('../Results/encoded_file.txt', 'w') as out:
     for row in data.values:
         rows = []
         for val in row:
-
             rows.append(dico[val])
         rows.sort()
         l=[str(i) for i in rows]
@@ -62,8 +62,8 @@ with open('../Results/encoded_file.txt', 'w') as out:
     out.close()
 
 
-fichier=open('../Results/invdico.dbm', 'wb')
-pickle.dump(invdico,fichier)
+file = open('../Results/invdico.dbm', 'wb')
+pickle.dump(invdico,file)
 
 
 
