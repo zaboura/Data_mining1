@@ -8,20 +8,20 @@ import re
 import os
 
 
+
 p=len(sys.argv)
-print(p)
 
 if p==3:
     f_out=sys.argv[2]
 else:
-    f_out="out.txt"
+    f_out="../Results/out.txt"
 
 # Construction du dictionnaire
 dico={}
 invdico={}
 indice=1
 
-data = pd.read_csv(sys.argv[1], sep = ';')
+data = pd.read_csv(sys.argv[1], sep = ';', low_memory=False)
 
 # Feature selection 
 features = ['REGION', 'AGER20', 'ANARR', 'ANEMR', 'ASCEN', 'BAIN', 'BATI', 'CATL', 'CHOS',
@@ -31,9 +31,9 @@ features = ['REGION', 'AGER20', 'ANARR', 'ANEMR', 'ASCEN', 'BAIN', 'BATI', 'CATL
             'SEXE', 'SFM', 'STOCD', 'TACT', 'VOIT', 'WC']
 # convert all the values to obeject
 data = data[features].astype('str')
-# select small set from data
+# select small set from data (change 10 to what ever you like)
 data = data[features].iloc[:10]
-print('\n Data :\n', data)
+#print('\n Data :\n', data)
 
 for i, row in enumerate(data.values):
     for col, val in zip(features,row):
@@ -49,7 +49,7 @@ print("Inverse dictionary    :", invdico)
 
 
     
-with open('../Results/encoded_file.txt', 'w') as out: 
+with open(f_out, 'w') as out: 
 
     for row in data.values:
         rows = []

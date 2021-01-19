@@ -20,17 +20,16 @@ def decode(a):
     return s
 
 p=len(sys.argv)
-#print p
 
 if p==3:
     f_out=sys.argv[2]
 else:
-    f_out="Results/res_decode.txt"
+    f_out="../Results/res_decode.txt"
 res=open(f_out,'w')
 
     
 # Construction du dictionnaire
-dic = open('./Results/invdico.dbm', 'rb')
+dic = open('../Results/invdico.dbm', 'rb')
 invdico = pickle.load(dic)
 #print invdico
 
