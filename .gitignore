@@ -9,4 +9,4 @@
 #files
 
 Data/GrandEst
-Results/*.txt
+Results/*.txt.DS_Store
