@@ -24,7 +24,7 @@ p=len(sys.argv)
 if p==3:
     f_out=sys.argv[2]
 else:
-    f_out="../Results/res_decode.txt"
+    f_out="../Results/decoded_data.txt"
 res=open(f_out,'w')
 
     

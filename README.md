@@ -8,8 +8,9 @@ Go to the code diractory and run the following commad lines:
     python file_name.py ../Data/GrantEast  ../Results/file_name
     
     
-###### In case you want to run the code on the total data you need to comment line 35 in Encoder_data_forSPMF.py
+We took as supports 10%, 20%, and 50% for both algorithms: Apriori(Ap) and Apriori Association Rules (AAR).
 
+The name of the file in Results folder indicate which algorithm and support used to generate it.
 ## Architecture of depository:
 
 
@@ -32,3 +33,4 @@ Data_minig1/
            
            Tools/
                 spmf.jar
+

@@ -6,15 +6,16 @@ import sys
 import pickle
 import re
 import os
-
-
+from time import sleep
+from tqdm import tqdm
+from progressbar import progressbar
 
 p=len(sys.argv)
 
 if p==3:
     f_out=sys.argv[2]
 else:
-    f_out="../Results/out.txt"
+    f_out="../Results/encoded_data.txt"
 
 # Construction du dictionnaire
 dico={}
@@ -24,37 +25,34 @@ indice=1
 data = pd.read_csv(sys.argv[1], sep = ';', low_memory=False)
 
 # Feature selection 
-features = ['REGION', 'AGER20', 'ANARR', 'ANEMR', 'ASCEN', 'BAIN', 'BATI', 'CATL', 'CHOS',
-            'CLIM', 'CMBL', 'COUPLE', 'CS1', 'CUIS', 'DEROU', 'DIPL_15', 'EAU', 'EGOUL',
-            'ELEC', 'EMPL', 'ETUD', 'GARL', 'ILTUU', 'IMMI', 'INAT', 'INFAM', 'INPER',
-            'MOCO', 'MODV', 'NA38', 'NATC', 'NATNC', 'NBPI', 'NPERR', 'RECH', 'SANI',
-            'SEXE', 'SFM', 'STOCD', 'TACT', 'VOIT', 'WC']
+features = ['AGER20', 'ANEMR', 'SFM', 'NPERR', 
+              'VOIT', 'MODV', 'CS1', 'ILTUU', 'EMPL', 'MOCO']
 # convert all the values to obeject
 data = data[features].astype('str')
 # select small set from data (change 10 to what ever you like)
-data = data[features].iloc[:10]
-#print('\n Data :\n', data)
-
-for i, row in enumerate(data.values):
+#data = data[features].iloc[:100]
+for i, row in progressbar(enumerate(data.values)):
     for col, val in zip(features,row):
         key = col +"-"+ val
-        data[col].iloc[i] = key
         if key not in dico.keys():
             dico[key] = indice
             invdico[indice] = key
             indice += 1
             
+for col in features:
+    data[col] = data[col].apply(lambda x : dico[col +"-"+ x])
+
 print("dictionary   :", dico)
 print("Inverse dictionary    :", invdico)
-
 
     
 with open(f_out, 'w') as out: 
 
-    for row in data.values:
+    for row in progressbar(data.values):
+        
         rows = []
         for val in row:
-            rows.append(dico[val])
+            rows.append(val)
         rows.sort()
         l=[str(i) for i in rows]
         out.write(" ".join(l))
