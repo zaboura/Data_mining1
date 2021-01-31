@@ -206,3 +206,8 @@ Data_minig1/
                 spmf.jar
 
 
+## Authors:
+* __Abdelhak Zabour__
+* __Mohammed Rameez Qureshi__ 
+* __Arash Morteza__
+* __Prach Chanoudom__ 
